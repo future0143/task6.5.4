@@ -16,19 +16,16 @@ import java.util.List;
 import static elements.ElemOfWorkWithSearchBarCase.listOfGoodsInProductCardSelector;
 import static util.WorkWithDataOfElements.convertTextPriceToNumber;
 import static util.WorkWithDataOfElements.getTotalPriceFromListOfWebElements;
-import static validator.ValidationOfElements.checkPathOfFilter;
 import static validator.ValidationOfElements.checkText;
 
 public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
 
     @Step(value = "Нажать на кнопку \"Фильтры\"")
     public static void clickFilters(WebDriver driver) {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement buttonFilter = driver.findElement(By.cssSelector(buttonFiltersCssSelector));
         buttonFilter.click();
     }
 
-    //Выбрать "Бытовая техника" - "Техника для дома" - "Пылесосы и пароочистители"
     @Step(value = "Выбрать фильтры")
     public static void chooseFilters(WebDriver driver, String firstFilter, String secondFilter, String thirdFilter) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -65,10 +62,10 @@ public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
         String homeAppliancesText = findPathOfFilter(driver, homeAppliancesLinkPath);
         String vacuumCleanersText = findPathOfFilter(driver, vacuumCleanersLinkPath);
 
-        checkPathOfFilter(homeText, "Главная");
-        checkPathOfFilter(appliancesText, "Бытовая техника");
-        checkPathOfFilter(homeAppliancesText, "Техника для дома");
-        checkPathOfFilter(vacuumCleanersText, "Пылесосы и пароочистители");
+        checkText(homeText, "Главная");
+        checkText(appliancesText, "Бытовая техника");
+        checkText(homeAppliancesText, "Техника для дома");
+        checkText(vacuumCleanersText, "Пылесосы и пароочистители");
     }
 
     @Step(value = "Навести курсор на первый товар из списка и добавить его в корзину")
@@ -78,13 +75,11 @@ public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
 
         Actions actions = new Actions(driver);
         actions.moveToElement(productFromList).perform();
-//        waitTime(2000);
 
         ArrayList<String> dataAboutProduct = getDataAboutProduct(driver);
 
         WebElement buttonAddToBasket = driver.findElement(By.cssSelector(buttonAddToBasketSelector));
         buttonAddToBasket.click();
-//        waitTime(3000);
 
         return dataAboutProduct;
     }
@@ -119,10 +114,8 @@ public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
         WebElement basketDiv = driver.findElement(By.cssSelector(basketDivSelector));
         WebElement basketLink = basketDiv.findElement(By.cssSelector(basketLinkSelector));
         basketLink.click();
-//        waitTime(3000);
     }
 
-    //Проверить, что текст и цена товара соответствует цене и названию товара из предыдущих шагов
     @Step(value = "Проверить, что текст и цена товара соответствует цене и названию товара из предыдущих шагов")
     public static void checkDataOfProduct(WebDriver driver, ArrayList<String> dataAboutProduct) {
         String expectedProductName = dataAboutProduct.get(0).substring(2);
@@ -143,7 +136,6 @@ public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
         checkText(expectedProductPrice, actualProductPrice);
     }
 
-    //Проверить что "Итого" = сумме товара
     @Step(value = "Получить итоговую сумму товаров")
     public static ArrayList<Integer> getTotalPriceOfProducts(WebDriver driver) {
         WebElement element = driver.findElement(By.cssSelector("p.b-top__total span[data-jsv]"));
@@ -160,7 +152,6 @@ public class StepsForAddProductToBasket extends ElemOfAddProductToBasketCase {
         return dataAboutTotalAmounts;
     }
 
-    //Проверить что кнопка "Заказать" активна для нажатия
     @Step(value = "Найти кнопку \"Заказать\"")
     public static WebElement findButtonToOrder(WebDriver driver) {
         return driver.findElement(By.name(buttonToOrderName));

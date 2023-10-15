@@ -1,6 +1,5 @@
 package steps;
 
-import config.ConfigSetup;
 import elements.ElemOfWorkWithSearchBarCase;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -8,8 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-
-import static elements.ElemOfWorkWithSearchBarCase.*;
 
 public class StepsForWorkWithSearchBar extends ElemOfWorkWithSearchBarCase {
 
@@ -27,6 +24,7 @@ public class StepsForWorkWithSearchBar extends ElemOfWorkWithSearchBarCase {
     @Step(value = "Поиск текста на странице")
     public static String findTextOnPage(WebDriver driver) {
         WebElement newPageText = driver.findElement(By.xpath(pathNameOfCatalog));
+
         return newPageText.getText();
     }
 
@@ -57,6 +55,5 @@ public class StepsForWorkWithSearchBar extends ElemOfWorkWithSearchBarCase {
     public static void clearSearchBar(WebDriver driver) {
         WebElement clearSearchButton = driver.findElement(By.cssSelector(buttonSearchBarClear));
         clearSearchButton.click();
-//        waitTime(5000);
     }
 }

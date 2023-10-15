@@ -22,7 +22,7 @@ public class AddingProductToBasket extends ConfigSetup {
         chooseFilters(driver, filterAppliances, homeAppliances, vacuumAndSteamCleaners);
 
         String expectedTitle = "Пылесосы и пароочистители";
-        checkTitleOfCatalog(expectedTitle, findTitleOfCatalog(driver));
+        checkText(expectedTitle, findTitleOfCatalog(driver));
 
         checkPathOfFilters(driver);
 

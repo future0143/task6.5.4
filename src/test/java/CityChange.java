@@ -23,18 +23,17 @@ public class CityChange extends ConfigSetup {
 
         String firstAddress = chooseFirstAddressFromList(driver);
 
-//Открылась информация о центре выдачи
         WebElement infoAboutPoint = findInfoAboutPickUpPoint(driver);
         checkElementDisplayed(infoAboutPoint);
-//Адрес пункта выдачи совпадает с тем адресом, что был предложен в списке адресов
+
         checkText(firstAddress, findAddressIntoInfoAboutPoint(infoAboutPoint));
 
         clickButtonChoose(driver);
 
         String currentUrlAfterChoosing = driver.getCurrentUrl();
-        validateUrlEquals(urlHomePage, currentUrlAfterChoosing);
+        checkText(urlHomePage, currentUrlAfterChoosing);
 
         String currentAddress = findCurrentAddress(driver);
-        checkText(firstAddress,currentAddress);
+        checkText(firstAddress, currentAddress);
     }
 }

@@ -18,7 +18,4 @@ public class ElemOfWorkWithFiltersCase {
     public static String tagNameOfFiltersList = "li";
     public static String listProductsAfterFiltersSelector = "product-card";
     public static String countOfProductsElementName = "goods-count";
-
-
-
 }

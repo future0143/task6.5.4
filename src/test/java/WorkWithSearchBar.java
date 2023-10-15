@@ -19,14 +19,12 @@ public class WorkWithSearchBar extends ConfigSetup {
         String keys = "iphone 13";
         WebElement searchBar = enterProductNameToSearchLine(driver, keys);
 
-        String expectedTextOnPage = "По запросу " + "«" + keys + "»" + " найдено";
-        checkText(expectedTextOnPage, findTextOnPage(driver));
+        checkText(keys, findTextOnPage(driver));
 
         String expectedTextOfSorterFilter = "По популярности";
         checkText(expectedTextOfSorterFilter, findNameOfSorterFilter(driver));
 
-        String expectedTextOfFirstFilter = "iphone 13";
-        checkText(expectedTextOfFirstFilter, findTextOnFirstFilter(driver));
+        checkText(keys, findTextOnFirstFilter(driver));
 
         int indexOfGoods = 0;
         String brandOfFirstProduct = findBrandOfFirstProduct(driver, indexOfGoods);

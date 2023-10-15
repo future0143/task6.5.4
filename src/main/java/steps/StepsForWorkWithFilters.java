@@ -34,7 +34,7 @@ public class StepsForWorkWithFilters extends ElemOfWorkWithFiltersCase {
 
         inputTextInFilter(driver, minPriceFilterName, minPrice);
         inputTextInFilter(driver, maxPriceFilterName, maxPrice);
-        listOfFilters.add("от " + minPrice + " до "  + maxPrice);
+        listOfFilters.add("от " + minPrice + " до " + maxPrice);
 
         applyOneFilter(driver, deliveryTimeSelector, listOfFilters);
 
@@ -90,7 +90,7 @@ public class StepsForWorkWithFilters extends ElemOfWorkWithFiltersCase {
     @Step(value = "Проверить, что выбранные фильтры отображаются на странице")
     public static void checkSelectedFiltersOnPage(WebDriver driver, List<String> listOfFiltersTextExpected) {
         WebElement filterList = driver.findElement(By.cssSelector(listOfSelectedFilters));
-        List <WebElement> listOfFiltersActual = filterList.findElements(By.tagName(tagNameOfFiltersList));
+        List<WebElement> listOfFiltersActual = filterList.findElements(By.tagName(tagNameOfFiltersList));
 
         List<String> listOfFiltersTextActual = getListOfTextsFromListOfElements(listOfFiltersActual);
 
@@ -98,7 +98,7 @@ public class StepsForWorkWithFilters extends ElemOfWorkWithFiltersCase {
     }
 
     @Step(value = "Найти кнопку \"Сбросить все\"")
-    public static WebElement findButtonToResetAll (WebDriver driver) {
+    public static WebElement findButtonToResetAll(WebDriver driver) {
         return driver.findElement(By.xpath(buttonToResetFilters));
     }
 }

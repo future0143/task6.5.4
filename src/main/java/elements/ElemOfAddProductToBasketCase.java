@@ -4,7 +4,7 @@ public class ElemOfAddProductToBasketCase {
 
     public static String buttonFiltersCssSelector = ".j-menu-burger-btn";
     public static String filterAppliances = "Бытовая техника";
-    public static String homeAppliances= "//span[contains(text(), 'Техника для дома')]";
+    public static String homeAppliances = "//span[contains(text(), 'Техника для дома')]";
     public static String vacuumAndSteamCleaners = "Пылесосы и пароочистители";
     public static String homeLinkPath = "//a[@href='/']/span[@itemprop='name']";
     public static String appliancesLinkPath = "//a[@href='/catalog/bytovaya-tehnika']/span[@itemprop='name']";
@@ -20,7 +20,6 @@ public class ElemOfAddProductToBasketCase {
     public static String brandOfProductFromList = ".product-card__brand";
     public static String nameOfProductFromList = ".product-card__name";
     public static String priceOfProductFromList = ".price__lower-price";
-    public static String listOfGoodsInBasketSelector = "accordion__list";
     public static String listOfProductsPrices = "div.accordion__list-item div.list-item__price-new";
     public static String buttonToOrderName = "ConfirmOrderByRegisteredUser";
 }

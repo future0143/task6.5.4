@@ -11,8 +11,7 @@ import static elements.ElemOfWorkWithFiltersCase.*;
 import static steps.StepsForAddProductToBasket.chooseFilters;
 import static steps.StepsForAddProductToBasket.findTitleOfCatalog;
 import static steps.StepsForWorkWithFilters.*;
-import static validator.ValidationOfElements.checkElementDisplayed;
-import static validator.ValidationOfElements.checkTitleOfCatalog;
+import static validator.ValidationOfElements.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class WorkWithFilters extends ConfigSetup {
@@ -20,13 +19,13 @@ public class WorkWithFilters extends ConfigSetup {
     @Test
     @DisplayName("Работа с фильтрами")
     @Description("Работа с фильтрами")
-    public void addProductToBasket() {
+    public void workWithFilters() {
         clickFilters(driver);
 
         chooseFilters(driver, filterElectronicsSelector, filterLaptopsAndPC, filterLaptops);
 
         String expectedTitle = "Ноутбуки и ультрабуки";
-        checkTitleOfCatalog(expectedTitle, findTitleOfCatalog(driver));
+        checkText(expectedTitle, findTitleOfCatalog(driver));
 
         String minPrice = "100 000";
         String maxPrice = "149 000";
